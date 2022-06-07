@@ -1,0 +1,17 @@
+<apex:page controller="NewCaseListController">
+    <apex:repeat var="case" value="{!newCases}">
+        <apex:outputLink value="/{!case.ID}">
+            <apex:outputText value="{!case.CaseNumber}">
+            </apex:outputText>
+        </apex:outputLink>
+    </apex:repeat>
+</apex:page>
+
+newcaselistcontrollers(apex class):
+public class NewCaseListController {
+
+    public List<Case> getNewCases(){
+        List<Case> filterList=[Select Id,CaseNumber from Case Where status='New'];
+        return filterList;
+    }
+}
